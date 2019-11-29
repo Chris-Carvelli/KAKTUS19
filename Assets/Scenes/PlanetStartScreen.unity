@@ -306,8 +306,8 @@ GameObject:
   - component: {fileID: 922877708}
   - component: {fileID: 922877707}
   - component: {fileID: 922877706}
-  - component: {fileID: 922877705}
   - component: {fileID: 922877704}
+  - component: {fileID: 922877705}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -340,12 +340,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 922877703}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0043843f990ca4641b3f520c0b6cd3b8, type: 3}
+  m_Script: {fileID: 11500000, guid: 7d5ffc2915ca52a4ea4e93f00b41b72a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationTarget: {fileID: 0}
-  rotSpeed: 3
-  rotDir: {x: 0, y: 0, z: 0}
+  actions:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!135 &922877706
 SphereCollider:
   m_ObjectHideFlags: 0

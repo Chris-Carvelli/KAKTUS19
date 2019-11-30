@@ -7,6 +7,8 @@ public class PlanetPhysics : MonoBehaviour
 	public float gravity = 9.81f;
 	public Rigidbody target;
 
+    public AnimationCurve distanceEasing;
+
 	[Header("Debug")]
 	public Vector3 dir;
 	public float magnitude;
@@ -28,5 +30,9 @@ public class PlanetPhysics : MonoBehaviour
     	magnitude = dir.magnitude;
         float force = (gravity * (body.mass * target.mass)) / (useDistance ? distance : 1);
         body.AddForce(dir * force, ForceMode.Acceleration);
+    }
+
+    private float _getDistance() {
+        return -1;
     }
 }

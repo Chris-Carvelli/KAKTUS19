@@ -28,8 +28,8 @@ public class Spawner : MonoBehaviour
     private void RandomSpawn() {
         float distance = Random.Range(distanceRange.x, distanceRange.y);
         Vector3 pos = Random.onUnitSphere * distance;
-        if (pos.x > 0)
-            pos.x = -pos.x;
+        if (pos.z > 0)
+            pos.z = -pos.z;
 
         Spawn(pos, Quaternion.identity);
     }

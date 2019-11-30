@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PickUp : MonoBehaviour
+public class Platform : MonoBehaviour
 {
 	public Color color;
 	
@@ -11,18 +11,14 @@ public class PickUp : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Init();
-        
+        renderer = GetComponent<MeshRenderer>();
+        SetColor(color);
     }
 
     // Update is called once per frame
     void Update()
     {
-    	
-    }
-
-    public void Init() {
-    	renderer = GetComponent<MeshRenderer>();
+        
     }
 
     public void SetColor(Color color_) {

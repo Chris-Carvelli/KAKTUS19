@@ -23,7 +23,7 @@ public class RaycastMenuPicker : MonoBehaviour
             if (Physics.Raycast(ray, out raycastHit))
             {
                 // Is it a menu object?
-                if (raycastHit.collider.gameObject.tag.Equals("menuObject"))
+                if (raycastHit.collider.gameObject.tag.Equals("MenuObject"))
                 {
                     // do we currently have a some sort of menu item we are looking at?
                     if (focusedMenuItem != null)

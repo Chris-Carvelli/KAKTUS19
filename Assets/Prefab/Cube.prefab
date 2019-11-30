@@ -112,6 +112,9 @@ MonoBehaviour:
   travelScale: 0.1
   landedScale: 1
   attractToCollided: 1
+  breakForce: 30000
+  breakTorque: 0
+  velocityMagnitude: 0
   forceMultiplier: 0
   distance: 0
   dir: {x: 0, y: 0, z: 0}

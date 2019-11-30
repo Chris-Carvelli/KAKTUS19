@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 18755878}
   - component: {fileID: 18755882}
   - component: {fileID: 18755883}
-  - component: {fileID: 18755884}
+  - component: {fileID: 18755879}
   m_Layer: 0
   m_Name: Planet
   m_TagString: Untagged
@@ -149,9 +149,22 @@ SphereCollider:
   m_GameObject: {fileID: 18755877}
   m_Material: {fileID: 13400000, guid: 0b0227410750ea0459e0bb734437a53f, type: 2}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Radius: 10
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &18755879
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 18755877}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 15, y: 15, z: 15}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &18755881
 Transform:
@@ -208,20 +221,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 14
   m_CollisionDetection: 0
---- !u!64 &18755884
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 18755877}
-  m_Material: {fileID: 13400000, guid: 0b0227410750ea0459e0bb734437a53f, type: 2}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Convex: 1
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 4151621958628188828, guid: 2cd70b63c5fa1c24db3c3b9032fc9f6d, type: 3}
 --- !u!1 &111769235
 GameObject:
   m_ObjectHideFlags: 0
@@ -549,12 +548,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 18755883}
   obj: {fileID: 8849338051079984131, guid: 5c004fa6189573d4b811a9ebe4a88579, type: 3}
-  distanceRange: {x: 20, y: 30}
+  distanceRange: {x: 50, y: 30}
   colors:
   - {r: 0.95686275, g: 0.2627451, b: 0.21176471, a: 1}
   - {r: 0.12941177, g: 0.5882353, b: 0.9529412, a: 1}
   - {r: 0.29803923, g: 0.6862745, b: 0.3137255, a: 1}
-  spawnEvery: {x: 2, y: 4}
+  spawnEvery: {x: 2, y: 3}
   _lastSpawn: -1
 --- !u!4 &888798372
 Transform:
@@ -564,7 +563,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 888798370}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 33.4, z: 0}
+  m_LocalPosition: {x: 0, y: 34.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -659,7 +658,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5cff8c51b571ad4396f89344e6da625, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 0.29803923, g: 0.6862745, b: 0.3137255, a: 1}
+  _platformColor: {r: 0.12941177, g: 0.5882353, b: 0.9529412, a: 1}
+  ShowDebugCounter: 0
+  DebugPlatformCounter: 0
 --- !u!65 &1844180682
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -810,7 +811,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5cff8c51b571ad4396f89344e6da625, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 0.12941177, g: 0.5882353, b: 0.9529412, a: 1}
+  _platformColor: {r: 0.29803923, g: 0.6862745, b: 0.3137255, a: 1}
+  ShowDebugCounter: 0
+  DebugPlatformCounter: 0
 --- !u!65 &2042193000
 BoxCollider:
   m_ObjectHideFlags: 0

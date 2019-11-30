@@ -1,5 +1,5 @@
 
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,27 +14,30 @@ public class GameManager : MonoBehaviour
     public float _spawnRate;
     [Tooltip("The Spawner of Cubes")]
     public Spawner _spawner;
-    [Tooltip("All the platforms in the game")]
-    public GameObject[] _platforms;
 
     [Header("UI")]
     [Tooltip("The counter that shows how many cubes are left")]
     public Text _cubeCounter;
     [Tooltip("The time it takes to fade out the cube counter at the end of the game")]
     public float _cubeCounterFadeoutTime;
-    [Tooltip("The endscreen object")]
+    [Tooltip("The end screen object")]
     public GameObject _endScreen;
     [Tooltip("The time it takes for the endscreen to slide into view")]
     public float _endScreenTweenTime;
-    [Tooltip("The ")]
+    [Tooltip("The end screen total counter")]
+    public Text _endScreenTotalCounter;
+    [Tooltip("The time for each endscreen score count step")]
+    public float _endScreenTotalCounterStep;
 
     // Private Variables
+    private Platform[] _platforms;
     private int _remainingCubes;
     private float _elapsedTime = 0.0f;
     private bool _canSpawnCubes = true;
 
     void Start()
     {
+        _platforms = FindObjectsOfType<Platform>();
         _remainingCubes = _maxCubes;
         _cubeCounter.text = $"{_remainingCubes}";
     }
@@ -91,15 +94,27 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator StartBoxCounting()
     {
-        float finalScore = 0.0f;
-        float elapsedScore = 0.0f;
-        // count points here
-        // ...
-        //while (elapsedScore < finalScore)
-        //{
-        //    elapsedScore +=
-        //    float alpha = elapsedScore / finalScore;
-        //}
+        int finalScore = 0;
+        for (int index = 0; index < _platforms.Length; index++)
+        {
+            finalScore += _platforms[index].CountColors();
+        }
+
+        if (finalScore < 0)
+        {
+            finalScore = 0;
+        }
+        else
+        {
+            int elapsedScore = 0;
+            while (elapsedScore < finalScore)
+            {
+                elapsedScore += 1;
+                _endScreenTotalCounter.text = $"{elapsedScore}";
+                yield return new WaitForSeconds(_endScreenTotalCounterStep);
+            }
+        }
+        _endScreenTotalCounter.text = $"{finalScore}";
         yield return null;
     }
 }

@@ -18,14 +18,14 @@ public class Spawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_lastSpawn < 0) {
-            HereSpawn();
-            _lastSpawn = Random.Range(spawnEvery.x, spawnEvery.y);
-        }
-        _lastSpawn -= Time.deltaTime;
+        //if (_lastSpawn < 0) {
+        //    HereSpawn();
+        //    _lastSpawn = Random.Range(spawnEvery.x, spawnEvery.y);
+        //}
+        //_lastSpawn -= Time.deltaTime;
     }
 
-    private void RandomSpawn() {
+    public void RandomSpawn() {
         float distance = Random.Range(distanceRange.x, distanceRange.y);
         Vector3 pos = Random.onUnitSphere * distance;
         if (pos.z > 0)

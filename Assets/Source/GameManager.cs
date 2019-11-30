@@ -1,5 +1,5 @@
 
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -22,11 +22,14 @@ public class GameManager : MonoBehaviour
     public Text _cubeCounter;
     [Tooltip("The time it takes to fade out the cube counter at the end of the game")]
     public float _cubeCounterFadeoutTime;
-    [Tooltip("The endscreen object")]
+    [Tooltip("The end screen object")]
     public GameObject _endScreen;
     [Tooltip("The time it takes for the endscreen to slide into view")]
     public float _endScreenTweenTime;
-    [Tooltip("The ")]
+    [Tooltip("The end screen total counter")]
+    public Text _endScreenTotalCounter;
+    [Tooltip("The time for each endscreen score count step")]
+    public float _endScreenTotalCounterStep;
 
     // Private Variables
     private int _remainingCubes;
@@ -91,15 +94,17 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator StartBoxCounting()
     {
-        float finalScore = 0.0f;
-        float elapsedScore = 0.0f;
-        // count points here
+        // do point counting
         // ...
-        //while (elapsedScore < finalScore)
-        //{
-        //    elapsedScore +=
-        //    float alpha = elapsedScore / finalScore;
-        //}
+        int elapsedScore = 0;
+        int finalScore = 0;
+        while (elapsedScore < finalScore)
+        {
+            elapsedScore += 1;
+            _endScreenTotalCounter.text = $"{elapsedScore}";
+            yield return new WaitForSeconds(_endScreenTotalCounterStep);
+        }
+        _endScreenTotalCounter.text = $"{finalScore}";
         yield return null;
     }
 }

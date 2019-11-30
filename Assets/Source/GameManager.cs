@@ -94,15 +94,25 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator StartBoxCounting()
     {
-        // do point counting
-        // ...
-        int elapsedScore = 0;
         int finalScore = 0;
-        while (elapsedScore < finalScore)
+        for (int index = 0; index < _platforms.Length; index++)
         {
-            elapsedScore += 1;
-            _endScreenTotalCounter.text = $"{elapsedScore}";
-            yield return new WaitForSeconds(_endScreenTotalCounterStep);
+            finalScore += _platforms[index].CountColors();
+        }
+
+        if (finalScore < 0)
+        {
+            finalScore = 0;
+        }
+        else
+        {
+            int elapsedScore = 0;
+            while (elapsedScore < finalScore)
+            {
+                elapsedScore += 1;
+                _endScreenTotalCounter.text = $"{elapsedScore}";
+                yield return new WaitForSeconds(_endScreenTotalCounterStep);
+            }
         }
         _endScreenTotalCounter.text = $"{finalScore}";
         yield return null;

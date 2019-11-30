@@ -19,7 +19,7 @@ public class Spawner : MonoBehaviour
     void Update()
     {
         if (_lastSpawn < 0) {
-            RandomSpawn();
+            HereSpawn();
             _lastSpawn = Random.Range(spawnEvery.x, spawnEvery.y);
         }
         _lastSpawn -= Time.deltaTime;

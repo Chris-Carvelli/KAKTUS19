@@ -7,8 +7,12 @@ public class PlanetPhysics : MonoBehaviour
 	public float gravity = 9.81f;
 	public Rigidbody target;
 
-    public Vector2 easeingRange;
-    public AnimationCurve distanceEasing;
+    public float travelScale;
+    public float landedScale;
+    public bool attractToCollided;
+
+    private float _forceScale;
+    private bool _collided = false;
 
 	[Header("Debug")]
     public float forceMultiplier;
@@ -23,6 +27,8 @@ public class PlanetPhysics : MonoBehaviour
     void Start()
     {
         body = GetComponent<Rigidbody>();
+
+        _forceScale = travelScale;
     }
 
     // Update is called once per frame
@@ -32,8 +38,23 @@ public class PlanetPhysics : MonoBehaviour
     	dir = (target.transform.position - transform.position).normalized;
     	magnitude = dir.magnitude;
         float force = (gravity * (body.mass * target.mass)) / (useDistance ? distance : 1);
-        forceMultiplier = distanceEasing.Evaluate(distance);
+        forceMultiplier = _forceScale;
         force *= forceMultiplier;
         body.AddForce(dir * force, ForceMode.Acceleration);
     }
+
+    public void OnCollisionEnter(Collision c) {
+        print(name);
+        _forceScale = landedScale;
+
+        if (!_collided && attractToCollided)
+            target = c.transform.GetComponent<Rigidbody>();
+        _collided = true;
+    }
+
+    /*public void OnCollisionExit(Collision c) {
+        _forceScale = travelScale;
+        target = c.transform.GetComponent<Rigidbody>();
+        _collided = false;
+    }*/
 }

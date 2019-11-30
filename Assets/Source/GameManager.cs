@@ -14,8 +14,6 @@ public class GameManager : MonoBehaviour
     public float _spawnRate;
     [Tooltip("The Spawner of Cubes")]
     public Spawner _spawner;
-    [Tooltip("All the platforms in the game")]
-    public GameObject[] _platforms;
 
     [Header("UI")]
     [Tooltip("The counter that shows how many cubes are left")]
@@ -32,12 +30,14 @@ public class GameManager : MonoBehaviour
     public float _endScreenTotalCounterStep;
 
     // Private Variables
+    private Platform[] _platforms;
     private int _remainingCubes;
     private float _elapsedTime = 0.0f;
     private bool _canSpawnCubes = true;
 
     void Start()
     {
+        _platforms = FindObjectsOfType<Platform>();
         _remainingCubes = _maxCubes;
         _cubeCounter.text = $"{_remainingCubes}";
     }

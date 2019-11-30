@@ -23,6 +23,6 @@ public class PlanetController : MonoBehaviour
 
         rotDir = new Vector3(xRot, yRot, zRot).normalized;
 
-        body.MoveRotation(body.rotation * Quaternion.Euler(rotDir));
+        body.MoveRotation(body.rotation * Quaternion.Euler(rotDir * rotSpeed));
     }
 }

@@ -172,7 +172,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 66e483686b81edb42b056fa795e9d4a2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -227,8 +227,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0043843f990ca4641b3f520c0b6cd3b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  offsetRot: {x: 0, y: 0, z: 0}
   rotationTarget: {fileID: 0}
   rotSpeed: 0.1
+  stick: []
+  gyro: {x: 0, y: 0, z: 0}
+  accel: {x: 0, y: 0, z: 0}
+  jc_ind: 0
+  orientation: {x: 0, y: 0, z: 0, w: 0}
   rotDir: {x: 0, y: 0, z: 0}
 --- !u!54 &18755883
 Rigidbody:

@@ -7,12 +7,42 @@ public class Spawner : MonoBehaviour
 	public Rigidbody target;
 	public PlanetPhysics obj;
 
+    public Vector2 distanceRange;
+    
+    public Color[] colors;
+
+    public Vector2 spawnEvery;
+
+    public float _lastSpawn = -1;
+
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire1")) {
-        	PlanetPhysics spw = Instantiate<PlanetPhysics>(obj, transform.position, transform.rotation);
-        	spw.target = target;
+        if (_lastSpawn < 0) {
+            RandomSpawn();
+            _lastSpawn = Random.Range(spawnEvery.x, spawnEvery.y);
         }
+        _lastSpawn -= Time.deltaTime;
+    }
+
+    private void RandomSpawn() {
+        float distance = Random.Range(distanceRange.x, distanceRange.y);
+        Vector3 pos = Random.onUnitSphere * distance;
+        if (pos.x > 0)
+            pos.x = -pos.x;
+
+        Spawn(pos, Quaternion.identity);
+    }
+
+    private void HereSpawn() {
+        Spawn(transform.position, transform.rotation);
+    }
+
+    private void Spawn(Vector3 pos, Quaternion rot) {
+        PlanetPhysics spw = Instantiate<PlanetPhysics>(obj, pos, rot);
+        PickUp pickUp = spw.GetComponent<PickUp>();
+        pickUp.Init();
+        pickUp.SetColor(colors[Random.Range(0, colors.Length)]);
+        spw.target = target;
     }
 }

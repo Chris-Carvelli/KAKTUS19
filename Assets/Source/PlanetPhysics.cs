@@ -10,7 +10,7 @@ public class PlanetPhysics : MonoBehaviour
 	[Header("Debug")]
 	public Vector3 dir;
 	public float magnitude;
-    
+
     public bool useDistance = false;
 
 	private Rigidbody body;

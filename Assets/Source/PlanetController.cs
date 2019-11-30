@@ -31,7 +31,7 @@ public class PlanetController : MonoBehaviour
 		joycons = JoyconManager.Instance.j;
 
 		if (joycons.Count > 0)
-			body.MoveRotation(joycons[jc_ind].GetVector());
+			body.MoveRotation(Quaternion.Inverse(joycons[jc_ind].GetVector()));
 	}
 	// Update is called once per frame
 	void FixedUpdate()

@@ -29,25 +29,20 @@ public class PlanetController : MonoBehaviour
 		accel = new Vector3(0, 0, 0);
 		// get the public Joycon array attached to the JoyconManager in scene
 		joycons = JoyconManager.Instance.j;
-		if (joycons.Count < jc_ind+1){
-			Destroy(gameObject);
-		}
 
-		transform.rotation = joycons[jc_ind].GetVector();
+		if (joycons.Count > 0)
+			body.MoveRotation(joycons[jc_ind].GetVector());
 	}
 	// Update is called once per frame
 	void FixedUpdate()
 	{
 		if (joycons.Count > 0) {
+			if(Input.GetButtonDown("Fire2"))
+				transform.rotation = joycons[jc_ind].GetVector();
+
 			Joycon j = joycons[jc_ind];
 			orientation = j.GetVector();
-			//body.MoveRotation(orientation);
-			Quaternion rot = joycons[jc_ind].GetVector();
-			/*rot = Quaternion.identity *
-					Quaternion.AngleAxis(rot.eulerAngles.y, Vector3.up) *
-					Quaternion.AngleAxis(rot.eulerAngles.z, Vector3.forward) *
-					Quaternion.AngleAxis(rot.eulerAngles.x, Vector3.right);*/
-			transform.rotation = rot;
+			body.MoveRotation(orientation);
 		}
 		else {
 			float xRot = Input.GetAxis("Horizontal");

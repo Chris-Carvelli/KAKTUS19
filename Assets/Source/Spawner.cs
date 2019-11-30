@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-	public Transform target;
+	public Rigidbody target;
 	public PlanetPhysics obj;
 
     // Update is called once per frame

@@ -68,6 +68,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -109,6 +110,7 @@ MonoBehaviour:
   target: {fileID: 0}
   dir: {x: 0, y: 0, z: 0}
   magnitude: 0
+  useDistance: 1
 --- !u!54 &8849338051079984128
 Rigidbody:
   m_ObjectHideFlags: 0

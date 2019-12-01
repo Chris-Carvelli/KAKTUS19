@@ -16,6 +16,7 @@ public class PlanetController : MonoBehaviour
 	public float[] stick;
 	public Vector3 gyro;
 	public Vector3 accel;
+	public float accelMagnitude;
 	public int jc_ind = 0;
 	public Quaternion orientation;
 
@@ -25,7 +26,6 @@ public class PlanetController : MonoBehaviour
 	void Start() {
 		body = GetComponent<Rigidbody>();
 
-		gyro = new Vector3(0, 0, 0);
 		accel = new Vector3(0, 0, 0);
 		// get the public Joycon array attached to the JoyconManager in scene
 		joycons = JoyconManager.Instance.j;
@@ -41,6 +41,10 @@ public class PlanetController : MonoBehaviour
 				transform.rotation = joycons[jc_ind].GetVector();
 
 			Joycon j = joycons[jc_ind];
+
+			accel = j.GetAccel();
+			accelMagnitude = accel.magnitude;
+
 			orientation = j.GetVector();
 			body.MoveRotation(orientation);
 		}

@@ -25,8 +25,8 @@ public class MusicManager : MonoBehaviour
             DontDestroyOnLoad(this.gameObject);
         }
 
-        SplashMusic = FMODUnity.RuntimeManager.CreateInstance("event:/Music/SplashMusic");
-        GameMusic = FMODUnity.RuntimeManager.CreateInstance("event:/Music/GameMusic");
+        SplashMusic = FMODUnity.RuntimeManager.CreateInstance("event:/SplashMusic");
+        GameMusic = FMODUnity.RuntimeManager.CreateInstance("event:/GameMusic");
     }
 
     

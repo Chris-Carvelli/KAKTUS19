@@ -74,6 +74,7 @@ public class JoyconManager: MonoBehaviour
 
     void Start()
     {
+    	Time.timeScale = 1;
 		for (int i = 0; i < j.Count; ++i)
 		{
 			Debug.Log (i);

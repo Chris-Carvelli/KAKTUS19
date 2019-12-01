@@ -49,6 +49,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        Time.timeScale = 1;
         _musicManager.ChangeToGameMusic();
         _platforms = FindObjectsOfType<Platform>();
         _remainingCubes = _maxCubes;
@@ -90,7 +91,7 @@ public class GameManager : MonoBehaviour
 
             if (_elapsedTime >= _endScreenWaitTime)
             {
-                StartCoroutine(SlowTime());
+                // StartCoroutine(SlowTime());
                 StartCoroutine(FadeoutCubeCounter());
                 StartCoroutine(ShowEndscreen());
                 _waitingForEndScreen = false;

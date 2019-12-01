@@ -114,6 +114,7 @@ MonoBehaviour:
   travelScale: 0.1
   landedScale: 1
   attractToCollided: 1
+  crateToCrateSound: event:/CrateToCrate
   force: 0
   velocityMagnitude: 0
   forceMultiplier: 0

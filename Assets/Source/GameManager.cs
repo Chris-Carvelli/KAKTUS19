@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        Time.timeScale = 1;
         _platforms = FindObjectsOfType<Platform>();
         _remainingCubes = _maxCubes;
         _cubeCounter.text = $"{_remainingCubes}";
@@ -81,14 +82,14 @@ public class GameManager : MonoBehaviour
                 _elapsedTime += Time.deltaTime;
             }
 
-            if (_elapsedTime >= _endScreenWaitTime)
-            {
-                StartCoroutine(SlowTime());
-                StartCoroutine(FadeoutCubeCounter());
-                StartCoroutine(ShowEndscreen());
-                _waitingForEndScreen = false;
-                _gameIsOver = true;
-            }
+            // if (_elapsedTime >= _endScreenWaitTime)
+            // {
+            //     StartCoroutine(SlowTime());
+            //     StartCoroutine(FadeoutCubeCounter());
+            //     StartCoroutine(ShowEndscreen());
+            //     _waitingForEndScreen = false;
+            //     _gameIsOver = true;
+            // }
         }
     }
 

@@ -49,13 +49,17 @@ public class PlanetController : MonoBehaviour
 			body.MoveRotation(orientation);
 		}
 		else {
-			float xRot = Input.GetAxis("Horizontal");
-			float yRot = Input.GetAxis("Vertical");
-			float zRot = Input.GetAxis("Yaw");
+            float xRot = Input.GetAxis("Horizontal");
+            float yRot = Input.GetAxis("Vertical");
+            //float zRot = Input.GetAxis("Yaw");
 
-			rotDir = new Vector3(xRot, yRot, zRot).normalized;
+            //rotDir = new Vector3(xRot, yRot, zRot).normalized;
 
-			body.MoveRotation(body.rotation * Quaternion.Euler(rotDir * rotSpeed));
+            //body.MoveRotation(body.rotation * Quaternion.Euler(rotDir * rotSpeed));
+
+            Quaternion deltaRotation = Quaternion.AngleAxis(xRot * rotSpeed, Vector3.down) * Quaternion.AngleAxis(yRot * rotSpeed, Vector3.right);
+
+            body.MoveRotation(deltaRotation.normalized * transform.rotation);
 		}
 
 		

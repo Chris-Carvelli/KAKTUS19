@@ -2,14 +2,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
+[Serializable]
 public class HitEmitter : MonoBehaviour
 {
-    public event EventHandler OnObjectHitPlanet;
-    public bool IsCounted = false;
-    
-    public void OnCollisionEnter(Collision collision)
+    public UnityEvent OnHit;
+
+    public void OnTriggerEnter(Collider collider)
     {
-        // Logic for what constitutes hitting the planet
+        if(collider.gameObject.tag == "Box")
+        {
+            OnHit.Invoke();
+        }
     }
 }

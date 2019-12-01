@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/PlanetStartScreen.unity
+    guid: b46c8cffbe73d9841b4091624c280194
+  - enabled: 1
+    path: Assets/Scenes/GameScene.unity
+    guid: 25220339a80f31340889ebd9468100bd
   m_configObjects: {}

@@ -3,15 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class StartScreenManager : MonoBehaviour
+namespace KAKTUS19
 {
-    public void StartGame(int sceneIndex)
+    public class StartScreenManager : MonoBehaviour
     {
-        SceneManager.LoadScene(sceneIndex);
+        public void StartGame(int sceneIndex)
+        {
+            SceneManager.LoadScene(sceneIndex);
+        }
+
+        public void Exit()
+        {
+            Application.Quit();
+        }
     }
 
-    public void Exit()
-    {
-        Application.Quit();
-    }
 }

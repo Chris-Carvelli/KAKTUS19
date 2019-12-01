@@ -107,13 +107,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afbc4d292a1f1eb46ab84976266a3273, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gravity: 7
+  gravity: 10
+  stickForce: 500
   target: {fileID: 0}
+  secondaryTarget: {fileID: 0}
   travelScale: 0.1
   landedScale: 1
   attractToCollided: 1
-  breakForce: 30000
-  breakTorque: 0
+  force: 0
   velocityMagnitude: 0
   forceMultiplier: 0
   distance: 0
@@ -128,7 +129,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8849338051079984141}
   serializedVersion: 2
-  m_Mass: 10
+  m_Mass: 5
   m_Drag: 1
   m_AngularDrag: 1
   m_UseGravity: 1

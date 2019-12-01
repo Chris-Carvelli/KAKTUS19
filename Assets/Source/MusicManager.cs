@@ -12,7 +12,17 @@ public class MusicManager : MonoBehaviour
     public FMOD.Studio.EventInstance GameMusic;
     public FMOD.Studio.EventInstance BackgroundNoise;
 
+    [Header("Gameover")]
+    [FMODUnity.EventRef]
+    public string gameOver = "";
 
+    [Header("Restart")]
+    [FMODUnity.EventRef]
+    public string restart = "";
+
+    [Header("Mouse Click")]
+    [FMODUnity.EventRef]
+    public string mouseClick = "";
 
     void Awake()
     {
@@ -59,4 +69,20 @@ public class MusicManager : MonoBehaviour
     {
         GameMusic.setParameterByName("GameDone", 0);
     }
+
+    public void GameOver()
+    {
+        FMODUnity.RuntimeManager.PlayOneShot(gameOver);
+    }
+
+    public void Restart()
+    {
+        FMODUnity.RuntimeManager.PlayOneShot(restart);
+    }
+
+    public void MouseClick()
+    {
+        FMODUnity.RuntimeManager.PlayOneShot(mouseClick);
+    }
 }
+

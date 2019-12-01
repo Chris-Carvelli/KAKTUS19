@@ -26,7 +26,7 @@ public class StartScreenManager : MonoBehaviour
         _Play = Vector3.Dot(_main.transform.position, playText.forward) > 0.3f;
         if (_Play == true)
         {
-            if (_planetController.accelMagnitude > 3)
+            if (_planetController.accelMagnitude > 3 || Input.GetAxis("Submit") != 0)
             {
                 StartGame(1);
             }

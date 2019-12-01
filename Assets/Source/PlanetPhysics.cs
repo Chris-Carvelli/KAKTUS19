@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMOD;
+using FMODUnity;
 
 public class PlanetPhysics : MonoBehaviour
 {
@@ -19,6 +21,10 @@ public class PlanetPhysics : MonoBehaviour
     // [Header("Joint config")]
     // public float breakForce;
     // public float breakTorque;
+
+    [Header("Music")]
+    [FMODUnity.EventRef]
+    public string crateToCrateSound = "";
 
 	[Header("Debug")]
     public float force;
@@ -74,6 +80,11 @@ public class PlanetPhysics : MonoBehaviour
         //print(name);
         _forceScale = landedScale;
 
+        if (!_collided)
+        {
+            FMODUnity.RuntimeManager.PlayOneShot(crateToCrateSound, transform.position + new Vector3(0, 0, -200));
+        }
+
         if (!_collided && attractToCollided && c.transform != target.transform) {
             secondaryTarget = c.transform.GetComponent<Rigidbody>();
             // body.velocity = Vector3.zero;
@@ -95,9 +106,9 @@ public class PlanetPhysics : MonoBehaviour
     //     _collided = false;
     //     _forceScale = travelScale;
     // }
-    /*public void OnCollisionExit(Collision c) {
-        _forceScale = travelScale;
-        target = _originalTarget;
+    public void OnCollisionExit(Collision c) {
+        // _forceScale = travelScale;
+        // target = _originalTarget;
         _collided = false;
-    }*/
+    }
 }

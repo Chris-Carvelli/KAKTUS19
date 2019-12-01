@@ -18,11 +18,11 @@ public class Spawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (_lastSpawn < 0) {
+        // if (_lastSpawn < 0) {
         //    HereSpawn();
         //    _lastSpawn = Random.Range(spawnEvery.x, spawnEvery.y);
-        //}
-        //_lastSpawn -= Time.deltaTime;
+        // }
+        // _lastSpawn -= Time.deltaTime;
     }
 
     public void RandomSpawn() {

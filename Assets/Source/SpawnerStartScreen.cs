@@ -32,8 +32,8 @@ public class SpawnStartScreen : MonoBehaviour
 
     private void Spawn(Vector3 pos, Quaternion rot) {
         PlanetPhysics spw = Instantiate<PlanetPhysics>(obj, pos, rot);
-        spw.tag = "Box";
         PickUp pickUp = spw.GetComponent<PickUp>();
+        pickUp.gameObject.tag = "Box";
         pickUp.Init();
         pickUp.SetColor(colors[Random.Range(0, colors.Length)]);
         spw.target = target;

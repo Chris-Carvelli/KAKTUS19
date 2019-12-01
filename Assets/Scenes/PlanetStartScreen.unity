@@ -346,7 +346,7 @@ PrefabInstance:
     - target: {fileID: 8057771855118463384, guid: 3b0514cb9694b0e41803c3438cc5e7db,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.46
+      value: -1.55
       objectReference: {fileID: 0}
     - target: {fileID: 8057771855118463384, guid: 3b0514cb9694b0e41803c3438cc5e7db,
         type: 3}
@@ -356,27 +356,27 @@ PrefabInstance:
     - target: {fileID: 8057771855118463384, guid: 3b0514cb9694b0e41803c3438cc5e7db,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.6998078
+      value: -0.6918744
       objectReference: {fileID: 0}
     - target: {fileID: 8057771855118463384, guid: 3b0514cb9694b0e41803c3438cc5e7db,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.1013364
+      value: 0.14597909
       objectReference: {fileID: 0}
     - target: {fileID: 8057771855118463384, guid: 3b0514cb9694b0e41803c3438cc5e7db,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.10133638
+      value: 0.14597917
       objectReference: {fileID: 0}
     - target: {fileID: 8057771855118463384, guid: 3b0514cb9694b0e41803c3438cc5e7db,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.69980776
+      value: 0.6918743
       objectReference: {fileID: 0}
     - target: {fileID: 8057771855118463384, guid: 3b0514cb9694b0e41803c3438cc5e7db,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.42
+      value: 3.39
       objectReference: {fileID: 0}
     - target: {fileID: 8057771855118463384, guid: 3b0514cb9694b0e41803c3438cc5e7db,
         type: 3}
@@ -386,7 +386,7 @@ PrefabInstance:
     - target: {fileID: 8057771855118463384, guid: 3b0514cb9694b0e41803c3438cc5e7db,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 16.479
+      value: 23.828001
       objectReference: {fileID: 0}
     - target: {fileID: 8397423549894531341, guid: 3b0514cb9694b0e41803c3438cc5e7db,
         type: 3}
@@ -505,6 +505,32 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 6.96, y: 2.68, z: 1.96}
   m_Center: {x: 0, y: 0.22, z: -1.3}
+--- !u!114 &508265355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 508265353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1cd8ffb5735fcf429ce37418d5de9f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnHit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1195504586}
+        m_MethodName: StartGame
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &876869751
 GameObject:
   m_ObjectHideFlags: 0
@@ -623,8 +649,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1195504585}
   - component: {fileID: 1195504584}
+  - component: {fileID: 1195504586}
   m_Layer: 0
-  m_Name: JoyconManager
+  m_Name: Managers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -658,6 +685,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1195504586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1195504583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab880af336d331043bd0bba46e3a8977, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1348711205
 GameObject:
   m_ObjectHideFlags: 0
@@ -1221,6 +1260,32 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 6.63, y: 2.52, z: 1}
   m_Center: {x: 0.1, y: 0.27, z: -0.22}
+--- !u!114 &2032587195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2032587193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1cd8ffb5735fcf429ce37418d5de9f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnHit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1195504586}
+        m_MethodName: Exit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2052102988
 GameObject:
   m_ObjectHideFlags: 0

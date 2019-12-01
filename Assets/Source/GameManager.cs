@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
     public float _endScreenWaitTime;
 
     // Private Variables
+    private MusicManager _musicManager;
     private Platform[] _platforms;
     private int _remainingCubes;
     private float _elapsedTime = 0.0f;
@@ -41,8 +42,14 @@ public class GameManager : MonoBehaviour
     private bool _waitingForEndScreen = false;
     private bool _gameIsOver = false;
 
+    private void Awake()
+    {
+        _musicManager = FindObjectOfType<MusicManager>();
+    }
+
     void Start()
     {
+        _musicManager.ChangeToGameMusic();
         _platforms = FindObjectsOfType<Platform>();
         _remainingCubes = _maxCubes;
         _cubeCounter.text = $"{_remainingCubes}";
@@ -50,6 +57,7 @@ public class GameManager : MonoBehaviour
 
     public void Restart()
     {
+        _musicManager.MusicRestart();
         SceneManager.LoadScene(0);
     }
 
@@ -130,6 +138,7 @@ public class GameManager : MonoBehaviour
             yield return null;
         }
         endScreenTransformRect.localPosition = new Vector2(screenHorizontalCenter, endScreenStartVerticalPos);
+        _musicManager.MusicGameOver();
         StartCoroutine(StartBoxCounting());
         yield return null;
     }

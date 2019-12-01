@@ -26,14 +26,14 @@ public class StartScreenManager : MonoBehaviour
         _Play = Vector3.Dot(_main.transform.position, playText.forward) > 0.3f;
         if (_Play == true)
         {
-            if (_planetController.accelMagnitude > 5)
+            if (_planetController.accelMagnitude > 3)
             {
                 StartGame(1);
             }
         }
         else
         {
-            if (_planetController.accelMagnitude > 5)
+            if (_planetController.accelMagnitude > 3)
             {
                 Exit();
             }

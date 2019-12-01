@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StartScreenManager : MonoBehaviour
+public class SpawnStartScreen : MonoBehaviour
 {
 	public Rigidbody target;
 	public PlanetPhysics obj;

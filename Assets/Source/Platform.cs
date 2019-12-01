@@ -12,7 +12,7 @@ public class Platform : MonoBehaviour
     [SerializeField]
     private int DebugPlatformCounter;
 
-    private MeshRenderer renderer;
+    private MeshRenderer platformMesh;
     private BoxCollider _collider;
     private List<GameObject> _trackedBoxes = new List<GameObject>();
 
@@ -21,7 +21,7 @@ public class Platform : MonoBehaviour
     {
         _collider = GetComponent<BoxCollider>();
         _collider.isTrigger = true;
-        renderer = GetComponent<MeshRenderer>();
+        platformMesh = GetComponent<MeshRenderer>();
         SetColor(_platformColor);
     }
 
@@ -67,6 +67,6 @@ public class Platform : MonoBehaviour
     public void SetColor(Color color_)
     {
         _platformColor = color_;
-        renderer.material.color = _platformColor;
+        platformMesh.material.color = _platformColor;
     }
 }

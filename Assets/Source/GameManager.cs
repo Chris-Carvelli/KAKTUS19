@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -14,6 +15,8 @@ public class GameManager : MonoBehaviour
     public float _spawnRate;
     [Tooltip("The Spawner of Cubes")]
     public Spawner _spawner;
+    [Tooltip("Time to slow down the timescale to 0")]
+    public float _timeScaleSlowdown;
 
     [Header("UI")]
     [Tooltip("The counter that shows how many cubes are left")]
@@ -28,18 +31,27 @@ public class GameManager : MonoBehaviour
     public Text _endScreenTotalCounter;
     [Tooltip("The time for each endscreen score count step")]
     public float _endScreenTotalCounterStep;
+    [Tooltip("After the last cube is sent, how long to wait before showing end screen")]
+    public float _endScreenWaitTime;
 
     // Private Variables
     private Platform[] _platforms;
     private int _remainingCubes;
     private float _elapsedTime = 0.0f;
     private bool _canSpawnCubes = true;
+    private bool _waitingForEndScreen = false;
+    private bool _gameIsOver = false;
 
     void Start()
     {
         _platforms = FindObjectsOfType<Platform>();
         _remainingCubes = _maxCubes;
         _cubeCounter.text = $"{_remainingCubes}";
+    }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene(0);
     }
 
     void Update()
@@ -49,7 +61,7 @@ public class GameManager : MonoBehaviour
             _elapsedTime += Time.deltaTime;
             if (_elapsedTime >= _spawnRate)
             {
-                //_spawner.spawn()
+                _spawner.RandomSpawn();
                 _remainingCubes -= 1;
                 _cubeCounter.text = $"{_remainingCubes}";
                 _elapsedTime = 0.0f;
@@ -57,9 +69,25 @@ public class GameManager : MonoBehaviour
                 {
                     _cubeCounter.text = "0";
                     _canSpawnCubes = false;
-                    StartCoroutine(FadeoutCubeCounter());
-                    StartCoroutine(ShowEndscreen());
+                    _waitingForEndScreen = true;
+                    _elapsedTime = 0.0f;
                 }
+            }
+        }
+        if (_waitingForEndScreen == true)
+        {
+            if (_elapsedTime < _endScreenWaitTime)
+            {
+                _elapsedTime += Time.deltaTime;
+            }
+
+            if (_elapsedTime >= _endScreenWaitTime)
+            {
+                StartCoroutine(SlowTime());
+                StartCoroutine(FadeoutCubeCounter());
+                StartCoroutine(ShowEndscreen());
+                _waitingForEndScreen = false;
+                _gameIsOver = true;
             }
         }
     }
@@ -67,6 +95,21 @@ public class GameManager : MonoBehaviour
     public IEnumerator FadeoutCubeCounter()
     {
         _cubeCounter.CrossFadeAlpha(0.0f, _cubeCounterFadeoutTime, false);
+        yield return null;
+    }
+
+    public IEnumerator SlowTime()
+    {
+        float elapsedTime = 0.0f;
+        while (elapsedTime < _timeScaleSlowdown)
+        {
+            elapsedTime += Time.unscaledDeltaTime;
+            float alpha = elapsedTime / _timeScaleSlowdown;
+            float lerpTime = Mathf.Lerp(1.0f, 0.0f, alpha);
+            Time.timeScale = lerpTime;
+            yield return null;
+        }
+        Time.timeScale = 0.0f;
         yield return null;
     }
 
@@ -80,7 +123,7 @@ public class GameManager : MonoBehaviour
         while (elapsedTime < _endScreenTweenTime)
         {
             // Insert tween logic here
-            elapsedTime += Time.deltaTime;
+            elapsedTime += Time.unscaledDeltaTime;
             float alpha = elapsedTime / _endScreenTweenTime;
             float newHorizontalPos = Mathf.Lerp(endScreenStartHorizontalPos, screenHorizontalCenter, alpha);
             Vector2 newPosition = new Vector2(newHorizontalPos, endScreenStartVerticalPos);
